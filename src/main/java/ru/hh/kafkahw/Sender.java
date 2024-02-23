@@ -16,7 +16,8 @@ public class Sender {
   public void doSomething(String topic, String message) {
     try {
       producer.send(topic, message);
-    } catch (Exception ignore) {
+    } catch (RuntimeException e) {
+      doSomething(topic, message);
     }
   }
 }
